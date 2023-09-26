@@ -8,6 +8,7 @@ public class MovementStart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     { 
+        // Add random direction on enemy start
         GetComponent<Rigidbody2D>().AddRelativeForce(Random.onUnitSphere * speed);
     }
 

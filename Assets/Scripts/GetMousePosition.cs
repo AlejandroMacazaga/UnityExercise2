@@ -12,6 +12,8 @@ public class GetMousePosition : MonoBehaviour
     void Update()
     {
         Vector2 mousePosition = Input.mousePosition;
+
+        // Stop movement when the mouse leaves the camera rectangle
         Rect screenRect = new Rect(0,0, Screen.width, Screen.height);
         if (!screenRect.Contains(Input.mousePosition))
             return;
