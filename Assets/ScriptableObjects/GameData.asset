@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: GameData
   m_EditorClassIdentifier: 
   maxNumberOfEnemies: 3
-  currentNumberOfEnemies: 1
+  currentNumberOfEnemies: 3
   enemy: {fileID: 7776038376764616552, guid: aa39ab1b352c99c409d3369c5959d38c, type: 3}
   enemySpawnPositions:
   - {x: -7, y: 3}
