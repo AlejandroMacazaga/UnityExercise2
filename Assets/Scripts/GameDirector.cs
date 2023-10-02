@@ -13,10 +13,13 @@ public class GameDirectorScript : MonoBehaviour
     {
         Cursor.visible = false;
         
-        for (int i = 0; i < gameData.maxNumberOfEnemies; i++)
+        for (int i = 0; i < gameData.currentNumberOfEnemies; i++)
         {
             SpawnEnemy(gameData.enemySpawnPositions[i]);
         }
+
+        StartCoroutine(CoroutinePowerupSpawn());
+        StartCoroutine(CoroutineEnemySpawn());
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public class GameDirectorScript : MonoBehaviour
     private void SpawnEnemy(Vector2 position)
     {
         Instantiate(gameData.enemy, position, Quaternion.identity);
+        
     }
 
     private void SpawnPowerup(Vector2 position)
@@ -37,11 +41,12 @@ public class GameDirectorScript : MonoBehaviour
 
     private IEnumerator CoroutineEnemySpawn()
     {
-        GameObject[] listOfEnemies = GameObject.FindGameObjectsWithTag(gameData.enemy.tag);
-        if (listOfEnemies.Length < gameData.maxNumberOfEnemies)
+        Debug.Log("Enemy spawn coroutine");
+        if (gameData.currentNumberOfEnemies <= gameData.maxNumberOfEnemies)
         {
             // Spawn enemy on random position inside rectangle
-
+            SpawnEnemy(
+                gameData.enemySpawnPositions[Random.Range(0, gameData.enemySpawnPositions.Length)]);
             yield return new WaitForSeconds(10.0f);
         }
         yield return null;
@@ -49,8 +54,11 @@ public class GameDirectorScript : MonoBehaviour
 
     private IEnumerator CoroutinePowerupSpawn()
     {
-        // Spawn powerup on random position inside rectangle
         
+        Debug.Log("Powerup spawn coroutine");
+        // Spawn powerup on random position inside rectangle
+        Rect screenRect = new Rect(0,0, Screen.width, Screen.height);
+        SpawnPowerup(gameData.enemySpawnPositions[Random.Range(0, gameData.enemySpawnPositions.Length)]);
         yield return new WaitForSeconds(25.0f);
     }
 }

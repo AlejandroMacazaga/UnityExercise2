@@ -15,6 +15,11 @@ public class MovementStart : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision2D)
     {
         GetComponent<AudioSource>().Play();
+
+        if (collision2D.gameObject.tag.Equals("Player"))
+        {
+            Destroy(this);
+        }
     }
 
 }

@@ -11,12 +11,11 @@ GameObject:
   - component: {fileID: 3399500179904782317}
   - component: {fileID: 6734202338171107345}
   - component: {fileID: -2787319314343936715}
-  - component: {fileID: 7579929698147995476}
   - component: {fileID: 1513272984211190517}
   - component: {fileID: -7294159109130866959}
   m_Layer: 0
   m_Name: SpaceshipPrefab
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,18 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5eefb337b5794fe44a97716d69546b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7579929698147995476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7469480199858494691}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0d151a1c4704834ba555050355a4443, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  playerData: {fileID: 11400000, guid: 0139060ad53bcdb409f1b0c18139b387, type: 2}
 --- !u!50 &1513272984211190517
 Rigidbody2D:
   serializedVersion: 4
