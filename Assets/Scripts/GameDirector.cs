@@ -29,4 +29,28 @@ public class GameDirectorScript : MonoBehaviour
     {
         Instantiate(gameData.enemy, position, Quaternion.identity);
     }
+
+    private void SpawnPowerup(Vector2 position)
+    {
+        Instantiate(gameData.powerup, position, Quaternion.identity);
+    }
+
+    private IEnumerator CoroutineEnemySpawn()
+    {
+        GameObject[] listOfEnemies = GameObject.FindGameObjectsWithTag(gameData.enemy.tag);
+        if (listOfEnemies.Length < gameData.maxNumberOfEnemies)
+        {
+            // Spawn enemy on random position inside rectangle
+
+            yield return new WaitForSeconds(10.0f);
+        }
+        yield return null;
+    }
+
+    private IEnumerator CoroutinePowerupSpawn()
+    {
+        // Spawn powerup on random position inside rectangle
+        
+        yield return new WaitForSeconds(25.0f);
+    }
 }

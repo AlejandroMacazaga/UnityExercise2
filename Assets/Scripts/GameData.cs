@@ -7,5 +7,6 @@ public class GameData : ScriptableObject
     public int maxNumberOfEnemies;
     public int currentNumberOfEnemies;
     public GameObject enemy;
+    public GameObject powerup;
     public Vector2[] enemySpawnPositions;
 }

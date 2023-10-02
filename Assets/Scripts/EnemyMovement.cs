@@ -12,4 +12,9 @@ public class MovementStart : MonoBehaviour
         GetComponent<Rigidbody2D>().AddRelativeForce(Random.onUnitSphere * speed);
     }
 
+    void OnCollisionEnter2D(Collision2D collision2D)
+    {
+        GetComponent<AudioSource>().Play();
+    }
+
 }
