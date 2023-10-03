@@ -13,6 +13,7 @@ public class PlayerLogic : MonoBehaviour
 
     private Camera _camera;
 
+    private bool _canBeHit = true;
     void Start()
     {
         _camera = Camera.main;
@@ -41,8 +42,12 @@ public class PlayerLogic : MonoBehaviour
                 playerData.currentLife += 1;
                 break;
             case "Enemy":
-                playerData.currentLife -= 1;
-                Debug.Log("ops");
+                if (_canBeHit)
+                {
+                    playerData.currentLife -= 1;
+                    _canBeHit = false;
+                    StartCoroutine(SetTrue());
+                }
                 if (playerData.currentLife <= 0)
                 {
                     Application.Quit();
@@ -51,5 +56,11 @@ public class PlayerLogic : MonoBehaviour
                 break;
         }
         
+    }
+
+    IEnumerator SetTrue()
+    {
+        yield return new WaitForSeconds(2); //wait 10 seconds
+        _canBeHit = true;
     }
 }

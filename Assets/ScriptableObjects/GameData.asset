@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d9ba1df07d96d438932430f8779100, type: 3}
   m_Name: GameData
   m_EditorClassIdentifier: 
-  maxNumberOfEnemies: 5
+  maxNumberOfEnemies: 10
   currentNumberOfEnemies: 2
   enemy: {fileID: 7776038376764616552, guid: aa39ab1b352c99c409d3369c5959d38c, type: 3}
   powerup: {fileID: 3768074220855658141, guid: 4328f66fac8babc459a0f30c57eb751a, type: 3}
