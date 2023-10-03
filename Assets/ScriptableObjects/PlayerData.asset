@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: faf60f85267a8c049ad523e3f7e008de, type: 3}
   m_Name: PlayerData
   m_EditorClassIdentifier: 
-  currentLife: 2
+  currentLife: 3

@@ -40,6 +40,7 @@ public class PlayerLogic : MonoBehaviour
             case "Powerup": 
                 Destroy(collision2D.gameObject);
                 playerData.currentLife += 1;
+                StartCoroutine(SlowTime());
                 break;
             case "Enemy":
                 if (_canBeHit)
@@ -62,5 +63,12 @@ public class PlayerLogic : MonoBehaviour
     {
         yield return new WaitForSeconds(2); //wait 10 seconds
         _canBeHit = true;
+    }
+
+    IEnumerator SlowTime()
+    {
+        Time.timeScale = 0.5f;
+        yield return new WaitForSeconds(3);
+        Time.timeScale = 1f;
     }
 }
