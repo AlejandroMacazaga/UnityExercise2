@@ -6,17 +6,21 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Cursor = UnityEngine.UIElements.Cursor;
 
 public class PlayerLogic : MonoBehaviour
 {
     [SerializeField] private PlayerData playerData;
-
+    [SerializeField] private GameObject deathMenu;
     private Camera _camera;
-
+    public int _gameScore;
     private bool _canBeHit = true;
+    private int _currentLife;
     void Start()
     {
         _camera = Camera.main;
+        _gameScore = 0;
+        _currentLife = playerData.currentLife;
     }
     // Update is called once per frame
     void Update()
@@ -39,8 +43,9 @@ public class PlayerLogic : MonoBehaviour
         {
             case "Powerup": 
                 Destroy(collision2D.gameObject);
-                playerData.currentLife += 1;
+                _currentLife += 1;
                 StartCoroutine(SlowTime());
+                _gameScore += 10;
                 break;
             case "Enemy":
                 if (_canBeHit)
@@ -51,12 +56,21 @@ public class PlayerLogic : MonoBehaviour
                 }
                 if (playerData.currentLife <= 0)
                 {
-                    Application.Quit();
+                    GameEnd();
                 }
 
                 break;
         }
         
+    }
+
+    void GameEnd()
+    {
+        deathMenu.SetActive(true);
+        Time.timeScale = 0f;
+        Destroy(gameObject);
+        deathMenu.GetComponent<DeathMenuLogic>().SetScore(_gameScore);
+        GameObject.FindWithTag("GameManager").GetComponent<GameManager>().AddScore(_gameScore);
     }
 
     IEnumerator SetTrue()

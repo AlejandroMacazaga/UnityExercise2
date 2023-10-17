@@ -11,7 +11,7 @@ public class GameDirectorScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Cursor.visible = false;
+        Time.timeScale = 1;
         
         for (int i = 0; i < gameData.currentNumberOfEnemies - 1; i++)
         {
